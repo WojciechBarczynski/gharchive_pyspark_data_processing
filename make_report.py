@@ -1,10 +1,9 @@
 import pandas as pd
 import plotly.express as px
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from utills import get_month_name
+from dash import Dash, html, dcc
 
-def plot(df):
+def get_bar_charts(df):
     unique_watch_events_plot = px.bar(df, x='day', y='unique_watch_events',
                 title='unique watch events daily', template='plotly_dark',
                 color='unique_watch_events',
@@ -23,13 +22,27 @@ def plot(df):
 
 
 def generate_a_report(repo_name, year, month, df):
-    unique_watch_events_plot, open_pull_requests = plot(df)
+    month_name = get_month_name(month)
+    unique_watch_events_plot, open_pull_requests = get_bar_charts(df)
+
+    app = Dash(__name__)
 
     app.layout = html.Div([
-        html.H1(f'Report of activity at {repo_name} repository in {month}, {year}',
+        html.H1(f'Report of activity at "{repo_name}" repository in {month_name}, {year}',
                 style={'text-align': 'center'}),
 
+        dcc.Graph(
+            id = 'watch_events_graph',
+            figure = unique_watch_events_plot
+        ),
+
+        dcc.Graph(
+            id = 'open_pull_requests_graph',
+            figure = open_pull_requests
+        )
     ])
+
+    app.run_server()
 
 df = pd.DataFrame(
     [['2020-01-01', 4, 1],
@@ -66,4 +79,5 @@ df = pd.DataFrame(
     columns=['day', 'unique_watch_events', 'open_pull_requests']
 )
 
-plot(df)
+if __name__ == '__main__':
+    generate_a_report('example', '2020', '01', df)

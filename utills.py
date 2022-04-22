@@ -75,5 +75,3 @@ def get_month_name(month):
     else:
         return 'December'
 
-
-print(get_user_input())
