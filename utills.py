@@ -37,6 +37,13 @@ def get_user_input():
     return repo_url, year, month
 
 
+def get_repo_name_and_owner(repo_url):
+    name_list = repo_url.split('/')
+    repo_name = name_list[-1]
+    repo_owner = name_list[-2]
+    return repo_name, repo_owner
+
+
 def get_number_of_days_in_month(month, year):
     if month == '01' or month == '03' or month == '05' or month == '07' or month == '08' or month == '10' or month == '12':
         return 31

@@ -3,8 +3,9 @@ import plotly.express as px
 from utills import get_month_name
 from dash import Dash, html, dcc
 
+
 def get_bar_charts(df):
-    unique_watch_events_plot = px.bar(df, x='day', y='unique_watch_events',
+    unique_watch_events_plot = px.bar(repo_stat_df, x='day', y='unique_watch_events',
                 title='unique watch events daily', template='plotly_dark',
                 color='unique_watch_events',
                 labels={
@@ -21,14 +22,16 @@ def get_bar_charts(df):
     return unique_watch_events_plot, open_pull_requests
 
 
-def generate_a_report(repo_name, year, month, df):
+def generate_a_report(repo_name, owner, year, month, repo_stat_df):
     month_name = get_month_name(month)
-    unique_watch_events_plot, open_pull_requests = get_bar_charts(df)
+    unique_watch_events_plot, open_pull_requests = get_bar_charts(repo_stat_df)
 
     app = Dash(__name__)
 
     app.layout = html.Div([
         html.H1(f'Report of activity at "{repo_name}" repository in {month_name}, {year}',
+                style={'text-align': 'center'}),
+        html.H2(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year}", Month: "{month_name}"',
                 style={'text-align': 'center'}),
 
         dcc.Graph(
@@ -44,7 +47,8 @@ def generate_a_report(repo_name, year, month, df):
 
     app.run_server()
 
-df = pd.DataFrame(
+
+repo_stat_df = pd.DataFrame(
     [['2020-01-01', 4, 1],
      ['2020-01-02', 3, 1],
      ['2020-01-03', 2, 1],
@@ -80,4 +84,4 @@ df = pd.DataFrame(
 )
 
 if __name__ == '__main__':
-    generate_a_report('example', '2020', '01', df)
+    generate_a_report('example', 'Jan Kowalski', '2020', '01', repo_stat_df)
