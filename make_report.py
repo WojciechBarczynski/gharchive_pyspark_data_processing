@@ -4,34 +4,40 @@ from utills import get_month_name
 from dash import Dash, html, dcc
 
 
-def get_bar_charts(df):
-    unique_watch_events_plot = px.bar(repo_stat_df, x='day', y='unique_watch_events',
+def get_bar_charts(repo_stat_pd_df):
+    unique_watch_events_plot = px.bar(repo_stat_pd_df, x='day', y='watch_events_day_count',
                 title='unique watch events daily', template='plotly_dark',
-                color='unique_watch_events',
+                color='watch_events_day_count',
                 labels={
                     'day': 'date',
-                    'unique_watch_events': 'unique watch events'
+                    'watch_events_day_count': 'unique watch events'
                 })
-    open_pull_requests = px.bar(df, x='day', y='open_pull_requests',
+    open_pull_requests = px.bar(repo_stat_pd_df, x='day', y='pull_request_events_day_count',
                                 title='open pull requests daily', template='plotly_dark',
-                                color='open_pull_requests',
+                                color='pull_request_events_day_count',
                                 labels={
                                     'day': 'date',
-                                    'open_pull_requests': 'open pull requests'
+                                    'pull_request_events_day_count': 'open pull requests'
                                 })
     return unique_watch_events_plot, open_pull_requests
 
 
-def generate_a_report(repo_name, owner, year, month, repo_stat_df):
-    month_name = get_month_name(month)
-    unique_watch_events_plot, open_pull_requests = get_bar_charts(repo_stat_df)
+def generate_a_report(repo_stat_pd_df, repo_name, owner, year_string, month_string):
+    print(repo_name)
+    month_name = get_month_name(month_string)
+    print(f'Report of activity at "{repo_name}" repository in {month_name}, {year_string}')
+    print(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"')
+    print(repo_stat_pd_df)
+    repo_stat_pd_df.to_csv(f'report_of_activity_at_{repo_name}_repository_in_{month_name}_of_{year_string}.csv')
+
+    unique_watch_events_plot, open_pull_requests = get_bar_charts(repo_stat_pd_df)
 
     app = Dash(__name__)
 
     app.layout = html.Div([
-        html.H1(f'Report of activity at "{repo_name}" repository in {month_name}, {year}',
+        html.H1(f'Report of activity at "{repo_name}" repository in {month_name}, {year_string}',
                 style={'text-align': 'center'}),
-        html.H2(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year}", Month: "{month_name}"',
+        html.H2(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"',
                 style={'text-align': 'center'}),
 
         dcc.Graph(
@@ -80,8 +86,9 @@ repo_stat_df = pd.DataFrame(
      ['2020-01-29', 0, 4],
      ['2020-01-30', 1, 3],
      ['2020-01-31', 2, 1]],
-    columns=['day', 'unique_watch_events', 'open_pull_requests']
+    columns=['day', 'watch_events_day_count', 'pull_request_events_day_count']
 )
 
 if __name__ == '__main__':
-    generate_a_report('example', 'Jan Kowalski', '2020', '01', repo_stat_df)
+    generate_a_report(repo_stat_df, 'freeCodeCamp', 'Jan Kowalski', '2020', '01')
+

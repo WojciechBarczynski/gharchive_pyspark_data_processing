@@ -1,53 +1,55 @@
 def get_user_input():
     print('This is a program to create a report of basic stats for public GitHub repo from chosen month.')
-    print('Please type public repo url (e.g. https://github.com/apache/spark): ')
-    repo_url = input()
-    repo_url = repo_url.strip()
+    print('Please type public repo name (e.g. freeCodeCamp/freeCodeCamp): ')
+    repo_full_name = input()
+    repo_full_name = repo_full_name.strip()
+    repo_short_name = repo_full_name.split('/')
+    repo_short_name = repo_short_name[0]
     print('Please type year (e.g. 2021): ')
-    year = input()
-    year = year.strip()
+    year_string = input()
+    year_string = year_string.strip()
     print('Please type chosen month (e.g. 01): ')
-    month = input()
-    month = month.strip()
-    month = month.lower()
-    if month == 'january' or month == 'jan'or month == '1':
-        month = '01'
-    elif month == 'february' or month == 'feb' or month == '2':
-        month = '02'
-    elif month == 'march' or month == 'mar' or month == '3':
-        month = '03'
-    elif month == 'april' or month == 'apr' or month == '4':
-        month = '04'
-    elif month == 'may' or month == '5':
-        month = '05'
-    elif month == 'june' or month == 'jun' or month == '6':
-        month = '06'
-    elif month == 'july' or month == 'jul' or month == '7':
-        month = '07'
-    elif month == 'august' or month == 'aug' or month == '8':
-        month = '08'
-    elif month == 'september' or month == 'sep' or month == '9':
-        month = '09'
-    elif month == 'october' or month == 'oct':
-        month = '10'
-    elif month == 'november' or month == 'nov':
-        month = '11'
-    elif month == 'december' or month == 'dec':
-        month = '12'
-    return repo_url, year, month
+    month_string = input()
+    month_string = month_string.strip()
+    month_string = month_string.lower()
+    if month_string == 'january' or month_string == 'jan'or month_string == '1':
+        month_string = '01'
+    elif month_string == 'february' or month_string == 'feb' or month_string == '2':
+        month_string = '02'
+    elif month_string == 'march' or month_string == 'mar' or month_string == '3':
+        month_string = '03'
+    elif month_string == 'april' or month_string == 'apr' or month_string == '4':
+        month_string = '04'
+    elif month_string == 'may' or month_string == '5':
+        month_string = '05'
+    elif month_string == 'june' or month_string == 'jun' or month_string == '6':
+        month_string = '06'
+    elif month_string == 'july' or month_string == 'jul' or month_string == '7':
+        month_string = '07'
+    elif month_string == 'august' or month_string == 'aug' or month_string == '8':
+        month_string = '08'
+    elif month_string == 'september' or month_string == 'sep' or month_string == '9':
+        month_string = '09'
+    elif month_string == 'october' or month_string == 'oct':
+        month_string = '10'
+    elif month_string == 'november' or month_string == 'nov':
+        month_string = '11'
+    elif month_string == 'december' or month_string == 'dec':
+        month_string = '12'
+    return repo_full_name, repo_short_name, year_string, month_string
 
 
-def get_repo_name_and_owner(repo_url):
-    name_list = repo_url.split('/')
-    repo_name = name_list[-1]
-    repo_owner = name_list[-2]
-    return repo_name, repo_owner
+def get_repo_owner(repo_name):
+    repo_owner = repo_name.split('/')
+    repo_owner = repo_owner[0]
+    return repo_owner
 
 
-def get_number_of_days_in_month(month, year):
-    if month == '01' or month == '03' or month == '05' or month == '07' or month == '08' or month == '10' or month == '12':
+def get_number_of_days_in_month(month_string, year_string):
+    if month_string == '01' or month_string == '03' or month_string == '05' or month_string == '07' or month_string == '08' or month_string == '10' or month_string == '12':
         return 31
-    if month == '02':
+    if month_string == '02':
+        year = int(year_string)
         if year % 4 == 0:
             return 29
         else:

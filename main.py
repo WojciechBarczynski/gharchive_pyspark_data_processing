@@ -9,10 +9,12 @@ import pandas as pd
 
 def get_stats(repo_name, year_string, month_string):
     spark = SparkSession.builder.appName('github_repo_stats').getOrCreate()
-    repo_stats_pd_df = pd.DataFrame(columns=['day', 'unique_watch_events', 'open_pull_request'])
+    repo_stats_pd_df = pd.DataFrame(columns=['day', 'watch_events_day_count', 'pull_request_events_day_count'])
     i = 0
 
-    for day in range(5):
+    days_in_month = utills.get_number_of_days_in_month(month_string, year_string)
+
+    for day in range(1, days_in_month + 1):
         day_string = str(day)
         if len(day_string) == 1:
             day_string += '0'
@@ -46,14 +48,14 @@ def get_stats(repo_name, year_string, month_string):
     
         repo_stats_pd_df.loc[i] = [f'{year_string}-{month_string}-{day_string}', watch_events_day_count, pull_request_events_day_count]
         i += 1
-        '''
-
-
     return repo_stats_pd_df
 
 
 def main():
-    print(get_stats('freeCodeCamp/freeCodeCamp', '2022', '01'))
+    repo_full_name, repo_short_name, year_string, month_string = utills.get_user_input()
+    repo_owner = utills.get_repo_owner(repo_full_name)
+    repo_stats_pd_df = get_stats(repo_full_name, year_string, month_string)
+    make_report.generate_a_report(repo_stats_pd_df, repo_short_name, repo_owner, year_string, month_string)
 
 
 if __name__ == '__main__':
