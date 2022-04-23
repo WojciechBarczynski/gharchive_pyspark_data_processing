@@ -6,38 +6,38 @@ from dash import Dash, html, dcc
 
 def get_bar_charts(repo_stat_pd_df):
     unique_watch_events_plot = px.bar(repo_stat_pd_df, x='day', y='watch_events_day_count',
-                title='unique watch events daily', template='plotly_dark',
+                title='New stars count daily', template='plotly_dark',
                 color='watch_events_day_count',
                 labels={
-                    'day': 'date',
-                    'watch_events_day_count': 'unique watch events'
+                    'day': 'Date',
+                    'watch_events_day_count': 'New stars count'
                 })
     open_pull_requests = px.bar(repo_stat_pd_df, x='day', y='pull_request_events_day_count',
-                                title='open pull requests daily', template='plotly_dark',
+                                title='Opened pull requests count daily', template='plotly_dark',
                                 color='pull_request_events_day_count',
                                 labels={
-                                    'day': 'date',
-                                    'pull_request_events_day_count': 'open pull requests'
+                                    'day': 'Date',
+                                    'pull_request_events_day_count': 'Opened pull requests'
                                 })
     return unique_watch_events_plot, open_pull_requests
 
 
-def generate_a_report(repo_stat_pd_df, repo_name, owner, year_string, month_string):
-    print(repo_name)
+def generate_a_report(repo_stat_pd_df, repo_short_name, owner, year_string, month_string):
+    print(repo_short_name)
     month_name = get_month_name(month_string)
-    print(f'Report of activity at "{repo_name}" repository in {month_name}, {year_string}')
-    print(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"')
+    print(f'Report of activity at "{repo_short_name}" repository in {month_name}, {year_string}')
+    print(f'Project name: "{repo_short_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"')
     print(repo_stat_pd_df)
-    repo_stat_pd_df.to_csv(f'report_of_activity_at_{repo_name}_repository_in_{month_name}_of_{year_string}.csv')
+    repo_stat_pd_df.to_csv(f'report_of_activity_at_{repo_short_name}_repository_in_{month_name}_of_{year_string}.csv')
 
     unique_watch_events_plot, open_pull_requests = get_bar_charts(repo_stat_pd_df)
 
     app = Dash(__name__)
 
     app.layout = html.Div([
-        html.H1(f'Report of activity at "{repo_name}" repository in {month_name}, {year_string}',
+        html.H1(f'Report of activity at "{repo_short_name}" repository in {month_name}, {year_string}',
                 style={'text-align': 'center'}),
-        html.H2(f'Project name: "{repo_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"',
+        html.H2(f'Project name: "{repo_short_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"',
                 style={'text-align': 'center'}),
 
         dcc.Graph(
