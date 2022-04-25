@@ -16,31 +16,31 @@ def main():
         repo_stat_pd_df = pd.read_csv(
             'examples/report_of_activity_at_freeCodeCamp_freeCodeCamp_repository_in_January_of_2022.csv',
             usecols=columns_list)
-        make_report.generate_a_report(
+        make_report.generate_report(
             repo_stat_pd_df, 'freeCodeCamp', 'freeCodeCamp', '01', '2022', failed_processing_pd_df)
     elif option == '2':
         repo_stat_pd_df = pd.read_csv(
             'examples/report_of_activity_at_kubernetes_kubernetes_repository_in_February_of_2022.csv',
             usecols=columns_list)
-        make_report.generate_a_report(repo_stat_pd_df, 'kubernetes', 'kubernetes', '02', '2022',
+        make_report.generate_report(repo_stat_pd_df, 'kubernetes', 'kubernetes', '02', '2022',
                                       failed_processing_pd_df)
     elif option == '3':
         repo_stat_pd_df = pd.read_csv(
             'examples/report_of_activity_at_tensorflow_tensorflow_repository_in_April_of_2021.csv',
             usecols=columns_list)
-        make_report.generate_a_report(repo_stat_pd_df, 'tensorflow', 'tensorflow', '04', '2021',
+        make_report.generate_report(repo_stat_pd_df, 'tensorflow', 'tensorflow', '04', '2021',
                                       failed_processing_pd_df)
     elif option == '4':
         repo_stat_pd_df = pd.read_csv(
             'examples/report_of_activity_at_facebook_react_repository_in_September_of_2017.csv',
             usecols=columns_list)
-        make_report.generate_a_report(repo_stat_pd_df, 'facebook', 'react', '09', '2017',
+        make_report.generate_report(repo_stat_pd_df, 'facebook', 'react', '09', '2017',
                                       failed_processing_pd_df)
     elif option == '5':
         repo_stat_pd_df = pd.read_csv(
             'examples/report_of_activity_at_docker_docker_repository_in_December_of_2016.csv',
             usecols=columns_list)
-        make_report.generate_a_report(repo_stat_pd_df, 'docker', 'docker', '12', '2016',
+        make_report.generate_report(repo_stat_pd_df, 'docker', 'docker', '12', '2016',
                                       failed_processing_pd_df)
     else:
         print('Option not supported. Try again')

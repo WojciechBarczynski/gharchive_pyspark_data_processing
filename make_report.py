@@ -22,7 +22,7 @@ def get_bar_charts(repo_stat_pd_df):
     return unique_watch_events_plot, open_pull_requests
 
 
-def generate_a_report(repo_stat_pd_df, owner, repo_short_name, month_string, year_string, failed_processing_pd_df):
+def generate_report(repo_stat_pd_df, owner, repo_short_name, month_string, year_string, failed_processing_pd_df):
     month_name = get_month_name(month_string)
     print(f'Report of activity at "{repo_short_name}" repository in {month_name}, {year_string}')
     print(f'Project name: "{repo_short_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"')
