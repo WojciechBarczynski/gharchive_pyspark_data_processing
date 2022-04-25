@@ -42,7 +42,7 @@ def generate_report(repo_stat_pd_df, owner, repo_short_name, month_string, year_
     app = Dash(__name__)
 
     app.layout = html.Div([
-        html.H1(f'Report of activity at "{repo_short_name}" repository in {month_name}, {year_string}',
+        html.H1(f'Report of activity at "{repo_short_name}" repository in {month_name} {year_string}',
                 style={'text-align': 'center'}),
         html.H2(f'Project name: "{repo_short_name}", Owner: "{owner}", Year: "{year_string}", Month: "{month_name}"',
                 style={'text-align': 'center'}),
