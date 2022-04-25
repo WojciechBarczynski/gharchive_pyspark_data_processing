@@ -12,7 +12,7 @@ def main():
         spark_data_processing.get_stats(repo_full_name, year_string, month_string)
 
     make_report.generate_a_report\
-        (repo_stats_pd_df, repo_short_name, repo_owner, year_string, month_string, failed_processing_pd_df)
+        (repo_stats_pd_df, repo_owner, repo_short_name, month_string, year_string, failed_processing_pd_df)
 
 
 if __name__ == '__main__':

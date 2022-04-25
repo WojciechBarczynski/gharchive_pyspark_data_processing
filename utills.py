@@ -13,7 +13,7 @@ def get_user_input():
     year_string = input()
     year_string = year_string.strip()
     if int(year_string) < 2011:
-        print('gharchive is not that archive :) Try agian.')
+        print('gharchive is not that archive :) Try again.')
         return get_user_input()
     print('Please type chosen month (e.g. 01): ')
     month_string = input()\
@@ -44,7 +44,7 @@ def get_user_input():
     elif month_string == 'december' or month_string == 'dec' or month_string == '12':
         month_string = '12'
     else:
-        print("Invalid month name. Type agian.")
+        print("Invalid month name. Type again.")
         return get_user_input()
     return repo_full_name, repo_short_name, year_string, month_string
 
@@ -56,7 +56,8 @@ def get_repo_owner(repo_name):
 
 
 def get_number_of_days_in_month(month_string, year_string):
-    if month_string == '01' or month_string == '03' or month_string == '05' or month_string == '07' or month_string == '08' or month_string == '10' or month_string == '12':
+    if month_string == '01' or month_string == '03' or month_string == '05' or month_string == '07' or \
+            month_string == '08' or month_string == '10' or month_string == '12':
         return 31
     if month_string == '02':
         year = int(year_string)
@@ -93,6 +94,7 @@ def get_month_name(month):
         return 'November'
     else:
         return 'December'
+
 
 if __name__ == '__main__':
     print(get_user_input())
