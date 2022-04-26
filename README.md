@@ -1,9 +1,12 @@
 # gharchive_pyspark_data_processing
+
 ## Overview
 This repo allows you to analyze and visualize a month of basic stats for any public GitHub repository of your choice. In the current version, it counts the daily number of: <br />
 - users that saved the repository with a star and <br />
 - number of opened pull requests <br />
+
 It uses archive GitHub events from ghachive as a source of data.
+
 ## Hardware  requirements
 ### Minimal
 4 GB of RAM <br />
