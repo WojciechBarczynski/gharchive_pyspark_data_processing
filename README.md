@@ -74,7 +74,7 @@ Plotly pull requests bar chart: <br />
      
 ## Further development propositions
 
-### "Business" changes
+### "Business"  improvements
 Changing existing code to display not only new stars or pull requests, but also to save other GH events, such as PR reviews, would allow diving deeper into 
 repository activity analysis. Such change isn't a particularly challenging task, because the current filtering method firstly selects and saves all repository events in 
 PySpark DataFrame, so filtering it for other events would be quite fast in comparison with filtering all GitHub events from all public repositories in a selected month,
@@ -83,7 +83,7 @@ and it can be done with just a few lines of code.
 ### Refactor existing code
 This project doesn't have the cleanest and most beautiful code and I'm aware of that. Some things need changes, such as exception handling in make_report.py, user input validation or date string formating (e.g. specific classes for handling multiple date formats) in utills.py. Those parts of code should be refactored before further development.
 
-### Computing changes
+### Computing improvements
 Because computations for separate days are independent, parallelizing computations seems to be the obvious next step in performance improvements. Unfortunately,
 multithreading in python is hardly possible, because of the CPython global interpreter lock (GIL), which doesn't support multi-core execution (https://wiki.python.org/moin/GlobalInterpreterLock). There are some workarounds for that, but not to put a too fine edge on it, if performance is our priority, 
 we should use Scala or Java in the first place for that project.
