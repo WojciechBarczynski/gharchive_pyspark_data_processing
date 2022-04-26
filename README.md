@@ -56,7 +56,7 @@ a) repo name (make sure to write it properly, any typo would change results dram
 b) selected name e.g. 2021 <br />
 c) selected month e.g. 01 <br />
 Example of main.py input:  <br />
-<img src="/assets/main_py_input_example.PNG" alt="main.py input example" title="main.py input example">
+<img src="/assets/main_py_input_example.PNG" alt="main.py input example" title="main.py input example"> <br />
 3. To open interactive report click on link displayed in the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
 
 #### II. Run report_demo.py: 
@@ -64,7 +64,7 @@ Example of main.py input:  <br />
 2. Input: <br />
 a) one selected repo (program prints options for you) e.g. 3 <br />
 Example of report_demo.py input:  <br />
-<img src="/assets/report_demo_py_input_example.PNG" alt="report_demp.py input example" title="report_demp.py input example">
+<img src="/assets/report_demo_py_input_example.PNG" alt="report_demp.py input example" title="report_demp.py input example"> <br />
 3. To open interactive report click on link displayed in the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
 
 
