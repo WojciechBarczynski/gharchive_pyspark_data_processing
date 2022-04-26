@@ -34,7 +34,7 @@ Example of path variable setup: <br />
 ## program execution:
 If you want to process data, generate, save it as CSV file and display an interactive report, run main.py <br />
 If you want to display one of the pre-computed interactive reports, run report_demo.py <br />
-Note that to display bar charts you have to click on the link displayed on the console after "Dash is running on message" (default is http://127.0.0.1:8050/).
+Note that to display bar charts you have to click on the link displayed on the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
 
 ## report display
 Here is a quick look at final report: <br />
