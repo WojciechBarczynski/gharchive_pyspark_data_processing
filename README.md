@@ -29,6 +29,8 @@ Installed: <br />
 - wget 1.21.3  <br />
 - all python libraries specified in requirements.txt.  <br />
 
+Here is a link to a great Apache Spark and Pyspark installation tutorial: https://youtu.be/AB2nUrKYRhw  <br />
+
 To run the program properly, please make sure to set up environmental variables for Java, Spark, Hadoop and wget.  <br />
 To run all programs correctly, please download:  <br />
 - the examples directory,  <br /> 
@@ -40,7 +42,6 @@ To run all programs correctly, please download:  <br />
 
 Downloading the requirements.txt file will help you with downloading all necessary python libraries in the required versions 
 (in most IDEs you can automatically download all specified libraries).  <br />
-Here is a link to a great Apache Spark and Pyspark installation tutorial: https://youtu.be/AB2nUrKYRhw  <br />
 
 Example of environmental variables setup: <br />
 <img src="/assets/environmental_variables.PNG" alt="Environmental variables setup" title="Environmental variables setup">
