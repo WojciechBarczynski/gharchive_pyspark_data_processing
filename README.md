@@ -49,15 +49,21 @@ Example of path variable setup: <br />
 #### I. Run main.py:
 1. If you want to process data, generate, save it as CSV file and display an interactive report, run main.py . <br />
 2. Input: <br />
-a) repo name e.g. facebook/react <br />
+a) repo name (make sure to write it properly, any typo would change results dramatically) e.g. facebook/react <br />
 b) selected name e.g. 2021 <br />
 c) selected month e.g. 01 <br />
+Example of main.py input:  <br />
+<img src="/assets/main_py_input_example.PNG" alt="main.py input example" title="main.py input example">
 3. To open interactive report click on link displayed in the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
+
 #### II. Run report_demo.py: 
 1. If you want to display one of the pre-computed interactive reports, run report_demo.py <br />
 2. Input: <br />
 a) one selected repo (program prints options for you) e.g. 3 <br />
-3. To open report click on link displayed in the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
+Example of report_demo.py input:  <br />
+<img src="/assets/report_demo_py_input_example.PNG" alt="report_demp.py input example" title="report_demp.py input example">
+3. To open interactive report click on link displayed in the console after "Dash is running on" message (default is http://127.0.0.1:8050/).
+
 
 ## Report display
 Here is a quick look at final report: <br />
