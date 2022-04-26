@@ -2,18 +2,18 @@
 ## overview
 This is the program for processing archive GitHub events from gharchive from a selected month to
 visualize basic stats, such as the number of users that saved the repository with a star or the number of pull
-request, for selected public GitHub repository.
+requests, for a selected public GitHub repository.
 ## hardware  requirements
 ### minimal
-4 GB of RAM memory <br />
+4 GB of RAM <br />
 1 GB of disc space <br />
 internet connection more stable than average CS student<br />
 
 ### recommended
-at least 6 GB of RAM memory <br />
+at least 6 GB of RAM <br />
 at least 2 GB of free SSD hard drive disc space <br />
 stable internet connection <br />
-processor with more computing power than microwave
+processor with more computing power than a microwave
 
 ## software requirements
 Windows 10 (recommended) or Linux operating system (It might work on macOS, but I'm too poor to check that.) <br />
